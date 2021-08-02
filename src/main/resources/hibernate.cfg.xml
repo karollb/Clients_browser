@@ -29,6 +29,7 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
 
         <!-- List of XML mapping files -->
+        <mapping class="pl.edu.wszib.client_browser.model.Client"/>
 
 
 
