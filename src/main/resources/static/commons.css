@@ -1,0 +1,18 @@
+#menu {
+    margin: 20px 0 0 0;
+    text-align: center;
+    border: 2px solid #000;
+}
+
+.menu_button {
+    font-size: 26px;
+    text-decoration: none;
+    color: #000;
+    margin: 5px 25px;
+    transition: color 1s;
+
+}
+
+.menu_button:hover {
+    color: #000fff;
+}

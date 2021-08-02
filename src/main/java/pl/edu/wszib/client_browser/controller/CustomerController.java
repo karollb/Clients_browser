@@ -9,24 +9,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import pl.edu.wszib.client_browser.service.ICustomerService;
 
 @Controller
-public class CommonController {
+public class CustomerController {
     private final ICustomerService customerService;
 
     @Autowired
-    public CommonController(final ICustomerService customerService) {
+    public CustomerController(final ICustomerService customerService) {
         this.customerService = customerService;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String landingPage() {
-        return "redirect:/main";
+    @RequestMapping(value = "/customer/{id}", method = RequestMethod.GET)
+    public String customer(@PathVariable final Long id, Model model) {
+        model.addAttribute("customer", this.customerService.getCustomerById(id));
+
+        return "/customer";
     }
-
-    @RequestMapping(value = "/main", method = RequestMethod.GET)
-    public String main(Model model) {
-
-        model.addAttribute("customers", this.customerService.getAllCustomers());
-        return "/main";
-    }
-
 }

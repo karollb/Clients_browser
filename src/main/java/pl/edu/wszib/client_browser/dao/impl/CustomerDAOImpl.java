@@ -7,28 +7,28 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import pl.edu.wszib.client_browser.dao.IClientDAO;
-import pl.edu.wszib.client_browser.model.Client;
+import pl.edu.wszib.client_browser.dao.ICustomerDAO;
+import pl.edu.wszib.client_browser.model.Customer;
 
 import javax.persistence.NoResultException;
 import java.util.List;
 
 @Repository
-public class ClientDAOImpl implements IClientDAO {
+public class CustomerDAOImpl implements ICustomerDAO {
     private final SessionFactory sessionFactory;
 
     @Autowired
-    public ClientDAOImpl(final SessionFactory sessionFactory) {
+    public CustomerDAOImpl(final SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
     @Override
-    public void addNewClient(final Client client) {
+    public void addNewCustomer(final Customer customer) {
         Session session = this.sessionFactory.openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            session.save(client);
+            session.save(customer);
             tx.commit();
         } catch (Exception e) {
             if (tx != null) {
@@ -41,13 +41,13 @@ public class ClientDAOImpl implements IClientDAO {
     }
 
     @Override
-    public void deleteClient(final Client client) {
+    public void deleteCustomer(final Customer customer) {
         Session session = this.sessionFactory.openSession();
         Transaction tx = null;
 
         try {
             tx = session.beginTransaction();
-            session.delete(client);
+            session.delete(customer);
             tx.commit();
         } catch (Exception e) {
             if (tx != null) {
@@ -56,16 +56,15 @@ public class ClientDAOImpl implements IClientDAO {
         } finally {
             session.close();
         }
-
     }
 
     @Override
-    public Client getClientById(final Long id) {
+    public Customer getCustomerById(final Long id) {
         Session session = this.sessionFactory.openSession();
-        Query<Client> query = session.createQuery("FROM pl.edu.wszib.client_browser.model.Client WHERE id = :id");
+        Query<Customer> query = session.createQuery("FROM pl.edu.wszib.client_browser.model.Customer WHERE id = :id");
         query.setParameter("id", id);
 
-        Client result = null;
+        Customer result = null;
         try {
             result = query.getSingleResult();
         } catch (NoResultException e) {
@@ -76,12 +75,12 @@ public class ClientDAOImpl implements IClientDAO {
     }
 
     @Override
-    public List<Client> getAllClients() {
+    public List<Customer> getAllCustomers() {
         Session session = this.sessionFactory.openSession();
-        Query<Client> query = session.createQuery("FROM pl.edu.wszib.client_browser.model.Client");
-        List<Client> clients = query.getResultList();
+        Query<Customer> query = session.createQuery("FROM pl.edu.wszib.client_browser.model.Customer");
+        List<Customer> customers = query.getResultList();
 
         session.close();
-        return clients;
+        return customers;
     }
 }
