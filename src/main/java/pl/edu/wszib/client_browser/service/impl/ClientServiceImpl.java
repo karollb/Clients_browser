@@ -6,6 +6,8 @@ import pl.edu.wszib.client_browser.dao.IClientDAO;
 import pl.edu.wszib.client_browser.model.Client;
 import pl.edu.wszib.client_browser.service.IClientService;
 
+import java.util.List;
+
 @Service
 public class ClientServiceImpl implements IClientService {
     private final IClientDAO clientDAO;
@@ -32,8 +34,12 @@ public class ClientServiceImpl implements IClientService {
         if (client.equals(this.clientDAO.getClientById(client.getId()))) {
             return false;
         }
-        addNewClient(client);
+        this.clientDAO.addNewClient(client);
         return true;
+    }
 
+    @Override
+    public List<Client> getAllClients() {
+        return this.clientDAO.getAllClients();
     }
 }

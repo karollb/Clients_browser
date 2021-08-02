@@ -11,6 +11,7 @@ import pl.edu.wszib.client_browser.dao.IClientDAO;
 import pl.edu.wszib.client_browser.model.Client;
 
 import javax.persistence.NoResultException;
+import java.util.List;
 
 @Repository
 public class ClientDAOImpl implements IClientDAO {
@@ -72,5 +73,15 @@ public class ClientDAOImpl implements IClientDAO {
         }
         session.close();
         return result;
+    }
+
+    @Override
+    public List<Client> getAllClients() {
+        Session session = this.sessionFactory.openSession();
+        Query<Client> query = session.createQuery("FROM pl.edu.wszib.client_browser.model.Client");
+        List<Client> clients = query.getResultList();
+
+        session.close();
+        return clients;
     }
 }
