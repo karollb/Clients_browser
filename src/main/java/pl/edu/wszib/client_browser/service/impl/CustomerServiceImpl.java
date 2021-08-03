@@ -77,6 +77,9 @@ public class CustomerServiceImpl implements ICustomerService {
     }
 
     private static boolean phoneValidation(final String phone) {
+        if (phone == null) {
+            return true;
+        }
         String regex = "(?<!\\w)(\\(?(\\+|00)?48\\)?)?[ -]?\\d{3}[ -]?\\d{3}[ -]?\\d{3}(?!\\w)";
         Pattern pattern = Pattern.compile(regex);
 

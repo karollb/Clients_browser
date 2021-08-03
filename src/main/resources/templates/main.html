@@ -6,6 +6,8 @@
 
     <link rel="stylesheet" href="/commons.css">
     <link rel="stylesheet" href="/customer.css">
+    <link rel="stylesheet" href="/main.css">
+
 </head>
 <body>
 <div th:replace="fragments.html::menu"></div>
@@ -15,8 +17,8 @@
             <div th:text="'ID:  ' + ${customer.id}"></div>
             <div th:text="'Imię:  ' + ${customer.name}"></div>
             <div th:text="'Nazwisko:  ' + ${customer.surname}"></div>
-            <a th:href="@{/customer/{id}(id=${customer.id})}">Szegółowe Informacje</a>
-            <a th:href="@{/deleteCustomer/{id}(id=${customer.id})}">Usuń Klienta</a>
+            <a th:href="@{/customer/{id}(id=${customer.id})}" class="information-button">Szegółowe Informacje</a>
+            <a th:href="@{/deleteCustomer/{id}(id=${customer.id})}" class="delete-button">Usuń Klienta</a>
 
         </div>
     </th:block>

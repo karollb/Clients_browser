@@ -1,0 +1,27 @@
+.information-button {
+    cursor: pointer;
+    text-decoration: none;
+    color: #000fff;
+    transition: color 1s;
+    display: inline-block;
+
+}
+
+.information-button:hover {
+    color: #ff0000;
+}
+
+.delete-button {
+    cursor: pointer;
+    text-decoration: none;
+    color: #000fff;
+    transition: color 1s;
+    display: inline-block;
+    float: right;
+
+}
+
+.delete-button:hover {
+    color: #ff0000;
+
+}
