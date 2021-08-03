@@ -16,6 +16,7 @@
             <div th:text="'Imię:  ' + ${customer.name}"></div>
             <div th:text="'Nazwisko:  ' + ${customer.surname}"></div>
             <a th:href="@{/customer/{id}(id=${customer.id})}">Szegółowe Informacje</a>
+            <a th:href="@{/deleteCustomer/{id}(id=${customer.id})}">Usuń Klienta</a>
 
         </div>
     </th:block>

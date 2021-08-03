@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Customer</title>
+    <link rel="stylesheet" href="/commons.css">
+    <link rel="stylesheet" href="/addCustomer.css">
+
+</head>
+<body>
+<div th:replace="fragments.html::menu"></div>
+<div id="content">
+    <form method="post" id="customer-form">
+        <p th:if="${info}" th:text="${info}" id="error"></p>
+        <input type="text" placeholder="Imię" th:field="*{customer.name}">
+        <input type="text" placeholder="Nazwisko" th:field="*{customer.surname}">
+        <input type="email" placeholder="Email" th:field="*{customer.email}">
+        <input type="text" placeholder="Adres" th:field="*{customer.address}">
+        <input type="tel" placeholder="Telefon" th:field="*{customer.phone}">
+        <input type="text" placeholder="Dodatkowe informacje" th:field="*{customer.additionalInformation}">
+        <input type="submit" value="Dodaj">
+    </form>
+</div>
+
+</body>
+</html>

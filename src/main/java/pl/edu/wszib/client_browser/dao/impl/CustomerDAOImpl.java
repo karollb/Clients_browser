@@ -68,7 +68,7 @@ public class CustomerDAOImpl implements ICustomerDAO {
         try {
             result = query.getSingleResult();
         } catch (NoResultException e) {
-            e.printStackTrace();
+
         }
         session.close();
         return result;

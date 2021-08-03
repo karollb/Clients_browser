@@ -9,7 +9,7 @@ public interface ICustomerService {
 
     List<Customer> getAllCustomers();
 
-    void deleteCustomer(final Customer customer);
+    void deleteCustomer(final Long id);
 
     boolean addNewCustomer(final Customer customer);
 }
